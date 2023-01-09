@@ -3,3 +3,51 @@
   padding:0;
   box-sizing: border-box;
 }
+h3 {
+  font-size: 15px;
+  text-decoration: underline;
+}
+h4 {
+  font-size: 14px;
+}
+.header{
+  background-color: #E8944A;
+  color: #434453;
+  height:10vh;
+  text-align: center;
+}
+.nav{
+  background-color: #434453;
+  color: #F4F2E4;
+  height:5vh;
+}
+.reviewsList{
+  width: auto;
+  height: auto;
+  background-color: #A6D2C0;
+  padding-top: 10px;
+} 
+.reviewsList li{
+  border-radius: 16px;
+  width: auto;
+  height: fit-content;
+  background-color: #434453;
+  color: #F4F2E4;
+  display: flex;
+  flex-direction: column;  
+  justify-content:center;
+  text-align: center;
+  padding: 16px;
+  margin: 0px 10px 10px 10px;
+} 
+.reviewsList li div{
+  border-radius: 16px;
+  width: auto;
+  height: fit-content;
+  background-color: #A76F42;
+  color: #F4F2E4;
+  display: flex;
+  flex-direction: row;  
+  justify-content:space-between;
+  padding: 6px;
+} 
