@@ -1,29 +1,31 @@
-import axios from "axios";
-import { useEffect } from "react";
+import { getReviewsFromId } from "../utility/axios-request";
+import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 
-function ReviewById({ reviewState, setReviewState }) {
+function ReviewById() {
+  const [reviewByIdState, setReviewByIdState] = useState(false);
   const reviewId = useParams();
   const number = Number(reviewId.id);
   useEffect(() => {
-    axios
-      .get(`https://games-review-hosting.onrender.com/api/reviews/${number}`)
-      .then((response) => {
-        setReviewState(response.data.reviewId);
-      });
+    getReviewsFromId(number).then((response) => {
+      setReviewByIdState(response);
+    });
   }, []);
-
-  return (
-    <div className="reviewById">
-      <section>
-        <h2>{reviewState.title}</h2>
-        <p>by</p>
-        <h2>{reviewState.owner}</h2>
-      </section>
-      <img src={reviewState.review_img_url} alt="shove here"></img>
-      <p className="reviewBody">{reviewState.review_body}</p>
-    </div>
-  );
+  if (!reviewByIdState) {
+    return <h2>loading...</h2>;
+  } else {
+    return (
+      <div className="reviewById">
+        <section>
+          <h2>{reviewByIdState.title}</h2>
+          <p>by</p>
+          <h2>{reviewByIdState.owner}</h2>
+        </section>
+        <img src={reviewByIdState.review_img_url} alt="shove here"></img>
+        <p className="reviewBody">{reviewByIdState.review_body}</p>
+      </div>
+    );
+  }
 }
 
 export default ReviewById;

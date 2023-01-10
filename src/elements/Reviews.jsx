@@ -1,7 +1,7 @@
 import { useParams } from "react-router-dom";
 import ReviewCard from "./reviews_li_card";
 
-function Category({ reviewState, setReviewState }) {
+function Reviews({ reviewState, setReviewState }) {
   return (
     <div>
       <ul className="reviewsList">
@@ -13,4 +13,4 @@ function Category({ reviewState, setReviewState }) {
   );
 }
 
-export default Category;
+export default Reviews;

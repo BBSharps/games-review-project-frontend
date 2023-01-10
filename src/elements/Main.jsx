@@ -1,140 +1,39 @@
 import { Routes, Route } from "react-router-dom";
-import Category from "./Category";
+import Reviews from "./Reviews";
 import ReviewById from "./review_by_id";
 import Home from "./Home";
 import { useState, useEffect } from "react";
-import axios from "axios";
+import { getReviews } from "../utility/axios-request";
 
 function Main() {
   const [reviewState, setReviewState] = useState([]);
   useEffect(() => {
-    axios
-      .get("https://games-review-hosting.onrender.com/api/reviews")
-      .then((response) => {
-        setReviewState(response.data.reviews);
-      });
+    getReviews().then((response) => {
+      setReviewState(response);
+    });
   }, []);
   return (
     <main>
       <Routes>
         <Route
-          path="/"
+          path="/*"
           element={
-            <Category
+            <Reviews
               reviewState={reviewState}
               setReviewState={setReviewState}
             />
           }
         />
         <Route
-          path="/all"
+          path="/reviews"
           element={
-            <Category
+            <Reviews
               reviewState={reviewState}
               setReviewState={setReviewState}
             />
           }
         />
-        <Route
-          path="/strategy"
-          element={
-            <Category
-              reviewState={reviewState}
-              setReviewState={setReviewState}
-            />
-          }
-        />
-        <Route
-          path="/hidden-roles"
-          element={
-            <Category
-              reviewState={reviewState}
-              setReviewState={setReviewState}
-            />
-          }
-        />
-        <Route
-          path="/dexterity"
-          element={
-            <Category
-              reviewState={reviewState}
-              setReviewState={setReviewState}
-            />
-          }
-        />
-        <Route
-          path="/push-your-luck"
-          element={
-            <Category
-              reviewState={reviewState}
-              setReviewState={setReviewState}
-            />
-          }
-        />
-        <Route
-          path="/roll-and-write"
-          element={
-            <Category
-              reviewState={reviewState}
-              setReviewState={setReviewState}
-            />
-          }
-        />
-        <Route
-          path="/deck-building"
-          element={
-            <Category
-              reviewState={reviewState}
-              setReviewState={setReviewState}
-            />
-          }
-        />
-        <Route
-          path="/engine-building"
-          element={
-            <Category
-              reviewState={reviewState}
-              setReviewState={setReviewState}
-            />
-          }
-        />
-        <Route
-          path="/all/:id"
-          element={
-            <ReviewById
-              reviewState={reviewState}
-              setReviewState={setReviewState}
-            />
-          }
-        />
-        <Route
-          path="/strategy/:id"
-          element={<ReviewById reviewState={reviewState} />}
-        />
-        <Route
-          path="/hidden-roles/:id"
-          element={<ReviewById reviewState={reviewState} />}
-        />
-        <Route
-          path="/dexterity/:id"
-          element={<ReviewById reviewState={reviewState} />}
-        />
-        <Route
-          path="/push-your-luck/:id"
-          element={<ReviewById reviewState={reviewState} />}
-        />
-        <Route
-          path="/roll-and-write/:id"
-          element={<ReviewById reviewState={reviewState} />}
-        />
-        <Route
-          path="/deck-building/:id"
-          element={<ReviewById reviewState={reviewState} />}
-        />
-        <Route
-          path="/engine-building/:id"
-          element={<ReviewById reviewState={reviewState} />}
-        />
+        <Route path="/reviews/:id" element={<ReviewById />} />
       </Routes>
     </main>
   );
