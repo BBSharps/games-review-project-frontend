@@ -2,7 +2,6 @@ import { useParams } from "react-router-dom";
 import ReviewCard from "./reviews_li_card";
 
 function Category({ reviewState, setReviewState }) {
-  console.log(reviewState);
   return (
     <div>
       <ul className="reviewsList">

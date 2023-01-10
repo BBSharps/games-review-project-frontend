@@ -98,14 +98,43 @@ function Main() {
             />
           }
         />
-        <Route path="/all/:id" element={<ReviewById />} />
-        <Route path="/strategy/:id" element={<ReviewById />} />
-        <Route path="/hidden-roles/:id" element={<ReviewById />} />
-        <Route path="/dexterity/:id" element={<ReviewById />} />
-        <Route path="/push-your-luck/:id" element={<ReviewById />} />
-        <Route path="/roll-and-write/:id" element={<ReviewById />} />
-        <Route path="/deck-building/:id" element={<ReviewById />} />
-        <Route path="/engine-building/:id" element={<ReviewById />} />
+        <Route
+          path="/all/:id"
+          element={
+            <ReviewById
+              reviewState={reviewState}
+              setReviewState={setReviewState}
+            />
+          }
+        />
+        <Route
+          path="/strategy/:id"
+          element={<ReviewById reviewState={reviewState} />}
+        />
+        <Route
+          path="/hidden-roles/:id"
+          element={<ReviewById reviewState={reviewState} />}
+        />
+        <Route
+          path="/dexterity/:id"
+          element={<ReviewById reviewState={reviewState} />}
+        />
+        <Route
+          path="/push-your-luck/:id"
+          element={<ReviewById reviewState={reviewState} />}
+        />
+        <Route
+          path="/roll-and-write/:id"
+          element={<ReviewById reviewState={reviewState} />}
+        />
+        <Route
+          path="/deck-building/:id"
+          element={<ReviewById reviewState={reviewState} />}
+        />
+        <Route
+          path="/engine-building/:id"
+          element={<ReviewById reviewState={reviewState} />}
+        />
       </Routes>
     </main>
   );
