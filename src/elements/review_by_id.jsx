@@ -15,7 +15,6 @@ function ReviewById() {
   const [votes, setVotes] = useState(0);
   useEffect(() => {
     patchPlusVote(number, votes).then((response) => {
-      console.log(response.votes);
       setNumberOfVotes(response.votes);
       setVotes(response.votes);
       setPressed(false);

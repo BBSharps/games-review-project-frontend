@@ -79,8 +79,7 @@ main{
   padding: 6px;
   display: flex;
   flex-direction: row;
-  flex-wrap: wrap;
-  
+  flex-wrap: wrap;  
 }
 .reviewById img{
   height: 15vh;
@@ -148,4 +147,5 @@ main{
   color: #F4F2E4;
   padding: 10px;
   border-radius: 16px;
+  max-width: 200px;
 }
