@@ -27,5 +27,8 @@ export const patchPlusVote = (id, number) => {
     })
     .then((response) => {
       return response.data.reviewVote;
+    })
+    .catch((error) => {
+      if (error) return { votes: "sorry vote failed, please refresh" };
     });
 };
