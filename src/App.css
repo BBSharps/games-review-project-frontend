@@ -79,14 +79,18 @@ main{
   padding: 6px;
   display: flex;
   flex-direction: row;
-  flex-wrap: wrap;
-  
+  flex-wrap: wrap;  
 }
 .reviewById img{
   height: 15vh;
+  max-width: 120px;
   width: auto;
   margin-left: auto;
   margin-bottom: 6px
+}
+.reviewById section {
+  max-width: 250px;
+ 
 }
 .reviewBody{
   border-radius: 16px;
@@ -122,4 +126,26 @@ main{
 }
 .reviewCommentCard h3{
   background-color: #A76F42;
+}
+
+.voteText{
+  margin-top: 10px;
+  color:#434453 ;
+}
+.vote{
+  border-radius: 16px; 
+  height:50px;
+  width: 50px;
+  background-color: #E8944A;
+  color: #434453;
+}
+.vote:disabled{
+  background-color:#A76F42;
+}
+.reviewTitle{
+  background-color: #434453;
+  color: #F4F2E4;
+  padding: 10px;
+  border-radius: 16px;
+  max-width: 200px;
 }

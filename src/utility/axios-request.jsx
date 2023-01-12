@@ -19,3 +19,13 @@ export const getCommentsFromId = (id) => {
     return response.data.comments;
   });
 };
+
+export const patchPlusVote = (id) => {
+  return api
+    .patch(`reviews/${id}`, {
+      inc_votes: "1",
+    })
+    .then((response) => {
+      return response.data.reviewVote;
+    });
+};
