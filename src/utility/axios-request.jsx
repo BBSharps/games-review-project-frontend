@@ -20,15 +20,12 @@ export const getCommentsFromId = (id) => {
   });
 };
 
-export const patchPlusVote = (id, number) => {
+export const patchPlusVote = (id) => {
   return api
     .patch(`reviews/${id}`, {
-      inc_votes: number,
+      inc_votes: "1",
     })
     .then((response) => {
       return response.data.reviewVote;
-    })
-    .catch((error) => {
-      if (error) return { votes: "sorry vote failed, please refresh" };
     });
 };
