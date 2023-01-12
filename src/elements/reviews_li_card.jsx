@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 
-function ReviewCard({ review, id }) {
+function ReviewCard({ review }) {
   return (
     <li>
       <Link to={`/reviews/${review.review_id}`}>
