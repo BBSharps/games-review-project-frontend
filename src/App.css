@@ -172,7 +172,7 @@ main{
   border-radius: 16px;
   width: auto;
 }
-.submitForm input{
+.submitForm textarea{
   margin-top: 5px;
   width: 85%;
   background-color: #F4F2E4;

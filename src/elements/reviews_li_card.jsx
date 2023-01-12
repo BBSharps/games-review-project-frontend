@@ -1,9 +1,8 @@
 import { Link } from "react-router-dom";
 
-function ReviewCard({ review }) {
-  const key = review.review_id;
+function ReviewCard({ review, id }) {
   return (
-    <li key={`${key}`}>
+    <li>
       <Link to={`/reviews/${review.review_id}`}>
         <h3>{review.title}</h3>
       </Link>

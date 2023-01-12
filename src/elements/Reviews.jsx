@@ -16,7 +16,9 @@ function Reviews() {
       <div>
         <ul className="reviewsList">
           {reviewState.map((review) => {
-            return <ReviewCard review={review} />;
+            return (
+              <ReviewCard key={reviewState.indexOf(review)} review={review} />
+            );
           })}
         </ul>
       </div>
