@@ -2,6 +2,8 @@ import {
   getReviewsFromId,
   getCommentsFromId,
   patchPlusVote,
+  getUsers,
+  postComment,
 } from "../utility/axios-request";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
@@ -12,14 +14,21 @@ function ReviewById() {
   const number = Number(reviewId.id);
   const [votes, setVotes] = useState(0);
   const [pressed, setPressed] = useState(false);
+  const [newCommentInput, setNewCommentInput] = useState("");
   const [reviewComments, setReviewComments] = useState([]);
   const [reviewByIdState, setReviewByIdState] = useState(false);
+  const [logUser, setLogUser] = useState("guest");
+  const [users, setUsers] = useState([]);
+  const [optimisticComment, setOptimisticComment] = useState([]);
   useEffect(() => {
     getCommentsFromId(number).then((response) => {
       setReviewComments(response);
       getReviewsFromId(number).then((response) => {
         setVotes(response.votes);
         setReviewByIdState(response);
+        getUsers().then((response) => {
+          setUsers(response);
+        });
       });
     });
   }, []);
@@ -61,8 +70,56 @@ function ReviewById() {
         <img src={reviewByIdState.review_img_url} alt="shove here"></img>
         <p className="reviewBody">{reviewByIdState.review_body}</p>
       </div>
-      <form></form>
+      <form className="loginForm">
+        <h2>Please select user to comment</h2>
+        <select
+          defaultValue="guest"
+          onChange={(event) => {
+            setLogUser(event.target.value);
+          }}
+          name="Users"
+          id="users"
+        >
+          <option>guest</option>
+          {users.map((user) => {
+            return <option>{user.username}</option>;
+          })}
+        </select>
+      </form>
+      {logUser !== "guest" ? (
+        <form
+          className="submitForm"
+          onSubmit={(event) => {
+            event.preventDefault();
+            postComment(number, logUser, newCommentInput)
+              .then((response) => {
+                setOptimisticComment([response, ...optimisticComment]);
+              })
+              .catch((error) => {
+                setNewCommentInput(
+                  "Sorry comment failed, please refresh the page"
+                );
+              });
+            setNewCommentInput("");
+          }}
+          id="newComment"
+        >
+          <h2>Submit a new comment as "{logUser}"</h2>
+          <input
+            value={newCommentInput}
+            onInput={(event) => {
+              setNewCommentInput(event.target.value);
+            }}
+          ></input>
+          <button htmlFor="newComment" type="submit">
+            Submit
+          </button>
+        </form>
+      ) : null}
       <ul className="commentsList">
+        {optimisticComment.map((comment) => {
+          return <ReviewCommentCard comment={comment} />;
+        })}
         {reviewComments.map((comment) => {
           return <ReviewCommentCard comment={comment} />;
         })}

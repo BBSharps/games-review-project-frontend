@@ -29,3 +29,18 @@ export const patchPlusVote = (id) => {
       return response.data.reviewVote;
     });
 };
+export const getUsers = () => {
+  return api.get(`users`).then((response) => {
+    return response.data.users;
+  });
+};
+export const postComment = (id, user, text) => {
+  return api
+    .post(`reviews/${id}/comments`, {
+      userName: user,
+      body: text,
+    })
+    .then((response) => {
+      return response.data.comment;
+    });
+};
