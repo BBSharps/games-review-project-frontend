@@ -1,5 +1,6 @@
 import "./App.css";
 import Main from "./elements/Main";
+import Navbar from "./elements/Navbar";
 
 function App() {
   return (
@@ -7,11 +8,7 @@ function App() {
       <header className="header">
         <h1>Games review page</h1>
       </header>
-      <nav className="nav">
-        <ul>
-          <li>category nav</li>
-        </ul>
-      </nav>
+      <Navbar />
       <Main />
     </div>
   );

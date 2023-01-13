@@ -7,9 +7,9 @@ function Main() {
   return (
     <main>
       <Routes>
-        <Route path="/*" element={<Reviews />} />
-        <Route path="/reviews" element={<Reviews />} />
-        <Route path="/reviews/:id" element={<ReviewById />} />
+        <Route path="/*" element={<Home />} />
+        <Route path=":category" element={<Reviews />} />
+        <Route path="/:category/:id" element={<ReviewById />} />
       </Routes>
     </main>
   );

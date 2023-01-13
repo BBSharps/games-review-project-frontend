@@ -56,7 +56,7 @@ function ReviewById() {
             onClick={() => {
               setPressed(true);
               setVotes(votes + 1);
-              patchPlusVote(reviewByIdState)
+              patchPlusVote(number)
                 .then((response) => {
                   setPressed(false);
                 })
