@@ -189,6 +189,7 @@ main{
   background-color: #434453;
   color: #F4F2E4;
   height: auto;
+  padding: 10px;
 }
 .nav ul{
   display: flex;
@@ -206,4 +207,22 @@ margin: 5px;
   background-color:#A76F42;
   color:#F4F2E4;
   padding: 3px;
+}
+.sortBar{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  padding :10px;
+  width: auto;
+  background-color:#434453;
+  color: #F4F2E4;
+}
+.sortBar option{
+  background-color: #A76F42;
+  color: #F4F2E4;
+}
+.sortBar select{
+  margin: 0px 10px; 
+  background-color: #A76F42;
+  color: #F4F2E4;
 }
