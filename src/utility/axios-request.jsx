@@ -4,11 +4,6 @@ const api = axios.create({
   baseURL: "https://games-review-hosting.onrender.com/api",
 });
 
-export const getReviews = () => {
-  return api.get("reviews").then((response) => {
-    return response.data.reviews;
-  });
-};
 export const getReviewsFromId = (id) => {
   return api.get(`reviews/${id}`).then((response) => {
     return response.data.reviewId;
@@ -43,4 +38,20 @@ export const postComment = (id, user, text) => {
     .then((response) => {
       return response.data.comment;
     });
+};
+export const getReviewsWithCategory = (category) => {
+  return category === "reviews"
+    ? api.get("reviews").then((response) => {
+        return response.data.reviews;
+      })
+    : api
+        .get("reviews", { params: { category: category } })
+        .then((response) => {
+          return response.data.reviews;
+        });
+};
+export const getCategories = () => {
+  return api.get("categories").then((response) => {
+    return response.data.categories;
+  });
 };

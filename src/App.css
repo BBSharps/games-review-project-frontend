@@ -185,3 +185,25 @@ main{
   color: #F4F2E4;
   background-color: #434453;
 }
+.nav{
+  background-color: #434453;
+  color: #F4F2E4;
+  height: auto;
+}
+.nav ul{
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  list-style:none;
+}
+
+.navLink {
+height: 20px;
+width: 110x;
+margin: 5px;
+}
+.navLink button{
+  background-color:#A76F42;
+  color:#F4F2E4;
+  padding: 3px;
+}
