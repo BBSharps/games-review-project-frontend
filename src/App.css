@@ -149,3 +149,39 @@ main{
   border-radius: 16px;
   max-width: 200px;
 }
+.loginForm{ 
+  background-color:#E8944A;
+  color:#434453;
+  padding: 10px;
+  border-radius: 16px;
+  width: auto;
+}
+.loginForm select{ 
+  margin-top: 5px;
+  color:#F4F2E4;
+  background-color:#434453;
+  padding: 10px;
+  border-radius: 16px;
+  width: auto;
+}
+.submitForm{
+  margin-top: 10px;
+  background-color:#A76F42;
+  color:#F4F2E4;
+  padding: 10px;
+  border-radius: 16px;
+  width: auto;
+}
+.submitForm textarea{
+  margin-top: 5px;
+  width: 85%;
+  background-color: #F4F2E4;
+  color: #434453;
+  resize: none;
+}
+.submitForm button{
+  margin: auto;
+  width: 54px;
+  color: #F4F2E4;
+  background-color: #434453;
+}

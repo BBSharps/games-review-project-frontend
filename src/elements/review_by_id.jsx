@@ -2,25 +2,35 @@ import {
   getReviewsFromId,
   getCommentsFromId,
   patchPlusVote,
+  getUsers,
 } from "../utility/axios-request";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import ReviewCommentCard from "./reviews_comment_card";
+import LoginForm from "./Login-Form";
+import SubmitForm from "./Submit-form";
 
 function ReviewById() {
   const reviewId = useParams();
   const number = Number(reviewId.id);
   const [votes, setVotes] = useState(0);
   const [pressed, setPressed] = useState(false);
+  const [newCommentInput, setNewCommentInput] = useState("");
   const [reviewComments, setReviewComments] = useState([]);
   const [reviewByIdState, setReviewByIdState] = useState(false);
+  const [logUser, setLogUser] = useState("guest");
+  const [users, setUsers] = useState([]);
+  const [optimisticComment, setOptimisticComment] = useState([]);
   useEffect(() => {
     getCommentsFromId(number).then((response) => {
       setReviewComments(response);
-      getReviewsFromId(number).then((response) => {
-        setVotes(response.votes);
-        setReviewByIdState(response);
-      });
+    });
+    getReviewsFromId(number).then((response) => {
+      setVotes(response.votes);
+      setReviewByIdState(response);
+    });
+    getUsers().then((response) => {
+      setUsers(response);
     });
   }, []);
   if (!reviewByIdState) {
@@ -46,7 +56,7 @@ function ReviewById() {
             onClick={() => {
               setPressed(true);
               setVotes(votes + 1);
-              patchPlusVote(reviewByIdState.review_id)
+              patchPlusVote(reviewByIdState)
                 .then((response) => {
                   setPressed(false);
                 })
@@ -61,10 +71,33 @@ function ReviewById() {
         <img src={reviewByIdState.review_img_url} alt="shove here"></img>
         <p className="reviewBody">{reviewByIdState.review_body}</p>
       </div>
-      <form></form>
+      <LoginForm setLogUser={setLogUser} users={users} />
+      {logUser !== "guest" ? (
+        <SubmitForm
+          setOptimisticComment={setOptimisticComment}
+          setNewCommentInput={setNewCommentInput}
+          optimisticComment={optimisticComment}
+          number={number}
+          logUser={logUser}
+          newCommentInput={newCommentInput}
+        />
+      ) : null}
       <ul className="commentsList">
+        {optimisticComment.map((comment) => {
+          return (
+            <ReviewCommentCard
+              key={"plus" + optimisticComment.indexOf(comment)}
+              comment={comment}
+            />
+          );
+        })}
         {reviewComments.map((comment) => {
-          return <ReviewCommentCard comment={comment} />;
+          return (
+            <ReviewCommentCard
+              key={reviewComments.indexOf(comment)}
+              comment={comment}
+            />
+          );
         })}
       </ul>
     </div>

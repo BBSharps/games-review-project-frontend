@@ -1,7 +1,6 @@
 function ReviewCommentCard({ comment }) {
-  const key = comment.comment_id;
   return (
-    <li className="reviewCommentCard" key={key}>
+    <li className="reviewCommentCard">
       <h3>{comment.author}</h3>
       <p>{comment.body}</p>
     </li>
