@@ -177,6 +177,7 @@ main{
   width: 85%;
   background-color: #F4F2E4;
   color: #434453;
+  resize: none;
 }
 .submitForm button{
   margin: auto;

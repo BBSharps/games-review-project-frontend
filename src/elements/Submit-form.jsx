@@ -10,6 +10,8 @@ function SubmitForm({
   newCommentInput,
 }) {
   const [submitting, setSubmitting] = useState(false);
+  const [error, setError] = useState(false);
+
   return (
     <form
       className="submitForm"
@@ -23,13 +25,14 @@ function SubmitForm({
             setSubmitting(false);
           })
           .catch((error) => {
-            setNewCommentInput("Sorry comment failed, please refresh the page");
+            setSubmitting(false);
+            setError(true);
           });
       }}
       id="newComment"
     >
-      <h2>Submit a new comment as "{logUser}"</h2>
-      {submitting ? (
+      {error ? <h2>Failed</h2> : <h2>Submit a new comment as "{logUser}"</h2>}
+      {submitting || error ? (
         <p>sumbitting comment</p>
       ) : (
         <textarea
@@ -44,6 +47,7 @@ function SubmitForm({
           Submit
         </button>
       ) : null}
+      {error ? <h2>please refresh</h2> : null}
     </form>
   );
 }
