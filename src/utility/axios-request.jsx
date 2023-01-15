@@ -60,11 +60,6 @@ export const getReviewsWithSort = (category, sort, asc) => {
           return response.data.reviews;
         });
 };
-export const getCategories = () => {
-  return api.get("categories").then((response) => {
-    return response.data.categories;
-  });
-};
 export const deleteComment = (id) => {
   return api.delete(`comments/${id}`).then((response) => {});
 };
