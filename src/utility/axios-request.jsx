@@ -55,3 +55,6 @@ export const getCategories = () => {
     return response.data.categories;
   });
 };
+export const deleteComment = (id) => {
+  return api.delete(`comments/${id}`).then((response) => {});
+};
