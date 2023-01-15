@@ -39,19 +39,24 @@ export const postComment = (id, user, text) => {
       return response.data.comment;
     });
 };
-export const getReviewsWithCategory = (category) => {
-  return category === "reviews"
-    ? api.get("reviews").then((response) => {
-        return response.data.reviews;
-      })
-    : api
-        .get("reviews", { params: { category: category } })
-        .then((response) => {
-          return response.data.reviews;
-        });
-};
+
 export const getCategories = () => {
   return api.get("categories").then((response) => {
     return response.data.categories;
   });
+};
+export const getReviewsWithSort = (category, sort, asc) => {
+  return category === "reviews"
+    ? api
+        .get("reviews", { params: { sorted_by: sort, order: asc } })
+        .then((response) => {
+          return response.data.reviews;
+        })
+    : api
+        .get("reviews", {
+          params: { category: category, sorted_by: sort, order: asc },
+        })
+        .then((response) => {
+          return response.data.reviews;
+        });
 };
