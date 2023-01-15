@@ -125,10 +125,19 @@ main{
   padding: 16px;
   margin: 5px auto;
 }
+.reviewCommentCard p {
+  word-wrap: break-word;
+}
 .reviewCommentCard h3{
   background-color: #A76F42;
 }
-
+.reviewCommentCard button{
+  margin: auto;
+  padding: 3px;
+  width: fit-content;
+  color: #F4F2E4;
+  background-color: #434453;
+}
 .voteText{
   margin-top: 10px;
   color:#434453 ;

@@ -13,6 +13,7 @@ import SubmitForm from "./Submit-form";
 function ReviewById() {
   const reviewId = useParams();
   const number = Number(reviewId.id);
+  const [removeComment, setRemoveComment] = useState(undefined);
   const [votes, setVotes] = useState(0);
   const [pressed, setPressed] = useState(false);
   const [newCommentInput, setNewCommentInput] = useState("");
@@ -33,6 +34,19 @@ function ReviewById() {
       setUsers(response);
     });
   }, []);
+
+  useEffect(() => {
+    setOptimisticComment(
+      optimisticComment.filter((comment) => {
+        return comment.comment_id !== removeComment;
+      })
+    );
+    setReviewComments(
+      reviewComments.filter((comment) => {
+        return comment.comment_id !== removeComment;
+      })
+    );
+  }, [removeComment]);
   if (!reviewByIdState) {
     return <h2>loading...</h2>;
   }
@@ -88,6 +102,10 @@ function ReviewById() {
             <ReviewCommentCard
               key={"plus" + optimisticComment.indexOf(comment)}
               comment={comment}
+              logUser={logUser}
+              setRemoveComment={setRemoveComment}
+              setReviewComments={setReviewComments}
+              setOptimisticComment={setOptimisticComment}
             />
           );
         })}
@@ -96,6 +114,10 @@ function ReviewById() {
             <ReviewCommentCard
               key={reviewComments.indexOf(comment)}
               comment={comment}
+              logUser={logUser}
+              setRemoveComment={setRemoveComment}
+              setReviewComments={setReviewComments}
+              setOptimisticComment={setOptimisticComment}
             />
           );
         })}
