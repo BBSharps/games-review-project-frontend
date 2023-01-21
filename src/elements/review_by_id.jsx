@@ -61,10 +61,10 @@ function ReviewById() {
     );
   }, [removeComment]);
   if (error) {
-    return <h2>Here be no review</h2>;
+    return <h2 className="error">Here be no review</h2>;
   }
   if (!reviewByIdState) {
-    return <h2>loading...</h2>;
+    return <h2 className="error">loading...</h2>;
   }
   return (
     <div>
