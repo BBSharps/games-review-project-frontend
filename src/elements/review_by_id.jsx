@@ -22,17 +22,30 @@ function ReviewById() {
   const [logUser, setLogUser] = useState("guest");
   const [users, setUsers] = useState([]);
   const [optimisticComment, setOptimisticComment] = useState([]);
+  const [error, setError] = useState(false);
   useEffect(() => {
-    getCommentsFromId(number).then((response) => {
-      setReviewComments(response);
-    });
-    getReviewsFromId(number).then((response) => {
-      setVotes(response.votes);
-      setReviewByIdState(response);
-    });
-    getUsers().then((response) => {
-      setUsers(response);
-    });
+    getCommentsFromId(number)
+      .then((response) => {
+        setReviewComments(response);
+      })
+      .catch((error) => {
+        setError(true);
+      });
+    getReviewsFromId(number)
+      .then((response) => {
+        setVotes(response.votes);
+        setReviewByIdState(response);
+      })
+      .catch((error) => {
+        setError(true);
+      });
+    getUsers()
+      .then((response) => {
+        setUsers(response);
+      })
+      .catch((error) => {
+        setError(true);
+      });
   }, []);
 
   useEffect(() => {
@@ -47,6 +60,9 @@ function ReviewById() {
       })
     );
   }, [removeComment]);
+  if (error) {
+    return <h2>Here be no review</h2>;
+  }
   if (!reviewByIdState) {
     return <h2>loading...</h2>;
   }
