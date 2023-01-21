@@ -30,6 +30,7 @@ h4 {
   color: #434453;
   height:10vh;
   text-align: center;
+  padding: 10px;
 }
 .nav{
   background-color: #434453;
@@ -226,6 +227,7 @@ margin: 5px;
   width: auto;
   background-color:#434453;
   color: #F4F2E4;
+  border-radius: 0px 0px 16px 16px;
 }
 .sortBar option{
   background-color: #A76F42;
@@ -235,4 +237,31 @@ margin: 5px;
   margin: 0px 10px; 
   background-color: #A76F42;
   color: #F4F2E4;
+}
+.frontPage{
+  text-align:center;
+}
+.frontPage nav{
+  background-color: #A6D2C0;
+  margin-top: 30px;
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+}
+.frontPage li{
+  width: 100%;
+  
+}
+.frontText {
+  background-color: #434453;
+  color:#F4F2E4;
+  padding: 10px;
+border-radius: 0px 0px 16px 16px;
+}
+.error {
+  text-align: center;
+  background-color: #434453;
+  color:#F4F2E4;
+  padding: 10px;
+border-radius: 0px 0px 16px 16px;
 }

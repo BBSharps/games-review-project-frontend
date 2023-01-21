@@ -22,11 +22,11 @@ function Reviews() {
       });
   }, [category, sort, asc]);
   if (error) {
-    return <h2>Here be no reviews</h2>;
+    return <h2 className="error">Here be no reviews</h2>;
   }
 
   if (reviewsWithCategory.length === 0) {
-    return <h2>Loading...</h2>;
+    return <h2 className="error">Loading...</h2>;
   }
   return (
     <div>
