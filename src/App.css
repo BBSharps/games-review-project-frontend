@@ -36,7 +36,7 @@ h4 {
   background-color: #434453;
   color: #F4F2E4;
   height:5vh;
-}
+  }
 main{
   width: 100vw;
   max-width: 600px;
@@ -207,6 +207,7 @@ main{
   flex-direction: row;
   flex-wrap: wrap;
   list-style:none;
+  justify-content: center
 }
 
 .navLink {
