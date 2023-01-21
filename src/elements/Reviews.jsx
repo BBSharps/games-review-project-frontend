@@ -9,16 +9,22 @@ function Reviews() {
   const [sort, setSort] = useState(undefined);
   const [asc, setAsc] = useState(undefined);
   const [reviewsWithCategory, setReviewWithCategory] = useState([]);
+  const [error, setError] = useState(false);
   useEffect(() => {
     setReviewWithCategory([]);
     getReviewsWithSort(category.pathname.slice(1), sort, asc)
       .then((response) => {
+        setError(false);
         setReviewWithCategory(response);
       })
       .catch((error) => {
-        console.log(error);
+        setError(true);
       });
   }, [category, sort, asc]);
+  if (error) {
+    return <h2>Here be no reviews</h2>;
+  }
+
   if (reviewsWithCategory.length === 0) {
     return <h2>Loading...</h2>;
   }
